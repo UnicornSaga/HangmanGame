@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <time.h>
 using namespace std;
 
 string generateWord(); //sinh ra 1 từ random để ng chơi đoán
@@ -9,35 +10,20 @@ void printHangman(int& point); //in hình giá treo mỗi khi đoán sai dựa t
 void welcomeHeadline(int& charCount); //in ra màn hình 1 welcome statement
 void printGuessLetter(vector<char>& checkGuess); //in ra những từ đã được ng chơi đoán
 void clearScreen();
-void renderGame(string& str, const string genWord, vector<char>& checkGuess, int& checkWord, int& point);
+void renderGame();
 
 
 int main()
 {
-    int point = 0;
-    string genWord = generateWord();
-    int checkWord = genWord.length(); //lấy độ dài từ đc generate
-    string str = "";
-    vector<char> checkGuess;
-
-    for (int i = 0; i < checkWord; i++) str = str + '-';
-
-    welcomeHeadline(checkWord);
-    while (point <= 7){
-        if (str == genWord){
-            cout << "Congrats, You have won!!!" << endl;
-            break;
-        }
-        if (point > 0){
-            printHangman(point);
-            printGuessLetter(checkGuess);
-        }
-        renderGame(str, genWord, checkGuess, checkWord, point);
-    }
-    //Nếu đã đoán quá 7 lần mà vẫn chưa đoán hết các từ thì thua
-    if (point > 7 and checkWord != 0){
-        cout << "Sorry but you have lost cunt!!" << endl;
-        cout << "The correct word is: " << genWord << endl;
+    bool continueGame = true;
+    while (continueGame == true){
+        renderGame();
+        char playerDes;
+        cout << "Do you want to play again?(Y|N): ";
+        cin >> playerDes;
+        playerDes = char(tolower(playerDes));
+        if (playerDes == 'y') continueGame = true;
+        else continueGame = false;
     }
 }
 
@@ -207,20 +193,44 @@ void clearScreen()
     for (int i = 0; i < 30 ; i++) cout << endl;
 }
 
-void renderGame(string& str, const string genWord, vector<char>& checkGuess, int& checkWord, int& point)
+void renderGame()
 {
-    cout << endl << str << endl;
-    char guess = inputChar(checkGuess);
-    int check = 0;
-    for (int i = 0; i < genWord.length(); i++){
-        if (guess == genWord[i]){
-            str[i] = guess;
-            check++;
-            checkWord--;
+    int point = 0;
+    string genWord = generateWord();
+    int checkWord = genWord.length(); //lấy độ dài từ đc generate
+    string str = "";
+    vector<char> checkGuess;
+
+    for (int i = 0; i < checkWord; i++) str = str + '-';
+
+    welcomeHeadline(checkWord);
+    while (point <= 7){
+        if (str == genWord){
+            cout << "Congrats, You have won!!!" << endl;
+            break;
         }
+        if (point > 0){
+            printHangman(point);
+            printGuessLetter(checkGuess);
+        }
+        cout << endl << str << endl;
+        char guess = inputChar(checkGuess);
+        int check = 0;
+        for (int i = 0; i < genWord.length(); i++){
+            if (guess == genWord[i]){
+                str[i] = guess;
+                check++;
+                checkWord--;
+            }
+        }
+        if (check == 0){
+            point++;
+        }
+        clearScreen();
     }
-    if (check == 0){
-        point++;
+        //Nếu đã đoán quá 7 lần mà vẫn chưa đoán hết các từ thì thua
+    if (point > 7 and checkWord != 0){
+        cout << "Sorry but you have lost cunt!!" << endl;
+        cout << "The correct word is: " << genWord << endl;
     }
-    clearScreen();
 }
