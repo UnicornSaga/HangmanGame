@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <time.h>
+#include <fstream>
 using namespace std;
 
 string generateWord(); //sinh ra 1 từ random để ng chơi đoán
@@ -29,42 +30,23 @@ int main()
 
 
 
-string generateWord()
+void generateWord(string& word, string& hint)
 {
-    string word_list[] = {
-	"angle", "ant", "apple", "arch", "arm", "army",
-        "baby", "bag", "ball", "band", "basin", "basket", "bath", "bed", "bee", "bell", "berry",
-        "bird", "blade", "board", "boat", "bone", "book", "boot", "bottle", "box", "boy",
-        "brain", "brake", "branch", "brick", "bridge", "brush", "bucket", "bulb", "button",
-        "cake", "camera", "card",  "cart", "carriage", "cat", "chain", "cheese", "chest",
-        "chin", "church", "circle", "clock", "cloud", "coat", "collar", "comb", "cord",
-        "cow", "cup", "curtain", "cushion",
-        "dog", "door", "drain", "drawer", "dress", "drop", "ear", "egg", "engine", "eye",
-        "face", "farm", "feather", "finger", "fish", "flag", "floor", "fly",
-        "foot", "fork", "fowl", "frame",
-        "garden", "girl", "glove", "goat", "gun",
-        "hair", "hammer", "hand", "hat", "head", "heart", "hook", "horn", "horse",
-        "hospital", "house",
-        "island", "jewel",
-        "kettle", "key", "knee", "knife", "knot",
-        "leaf", "leg", "library", "line", "lip", "lock",
-        "map", "match", "monkey", "moon", "mouth", "muscle",
-        "nail", "neck", "needle", "nerve", "net", "nose", "nut",
-        "office", "orange", "oven", "parcel", "pen", "pencil", "picture", "pig", "pin",
-        "pipe", "plane", "plate", "plow", "pocket", "pot", "potato", "prison", "pump",
-        "rail", "rat", "receipt", "ring", "rod", "roof", "root",
-        "sail", "school", "scissors", "screw", "seed", "sheep", "shelf", "ship", "shirt",
-        "shoe", "skin", "skirt", "snake", "sock", "spade", "sponge", "spoon", "spring",
-        "square", "stamp", "star", "station", "stem", "stick", "stocking", "stomach",
-        "store", "street", "sun",
-        "table", "tail", "thread", "throat", "thumb", "ticket", "toe", "tongue", "tooth",
-        "town", "train", "tray", "tree", "trousers",
-        "umbrella",
-        "wall", "watch", "wheel", "whip", "whistle", "window", "wire", "wing", "worm"};
+    string genWord[2];
+    ifstream file;
+    file.open("Hangman_word.txt", ios::in);
+    int n;
+    file >> n;
     srand(time(0));
-    int word_num = sizeof(word_list) / sizeof(string);
-    int index = rand() % word_num;
-    return word_list[index];
+    int index = rand() % n;
+    string data;
+    getline(file, data);
+    for (int i = 0; i < index; i++){
+        getline(file, word, ',');
+        file.ignore();
+        getline(file, hint, ';');
+        getline(file, data);
+    }
 }
 
 
@@ -196,7 +178,8 @@ void clearScreen()
 void renderGame()
 {
     int point = 0;
-    string genWord = generateWord();
+    string genWord, hint;
+    generateWord(genWord, hint);
     int checkWord = genWord.length(); //lấy độ dài từ đc generate
     string str = "";
     vector<char> checkGuess;
@@ -207,11 +190,15 @@ void renderGame()
     while (point <= 7){
         if (str == genWord){
             cout << "Congrats, You have won!!!" << endl;
+            cout << "The word is: " << genWord << endl;
             break;
         }
         if (point > 0){
             printHangman(point);
             printGuessLetter(checkGuess);
+        }
+        if (point >= 6){
+            cout << hint << endl;
         }
         cout << endl << str << endl;
         char guess = inputChar(checkGuess);
