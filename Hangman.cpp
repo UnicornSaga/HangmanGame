@@ -61,7 +61,9 @@ char inputChar(vector<char>& checkGuess)
     do{
         cout << "Your guess: ";
         cin >> guess;
-        if (guess.length() > 1) cout << "Please enter only 1 character. Try again." << endl;
+        if (guess.length() > 1){
+            cout << "Please enter only 1 character. Try again." << endl;
+        }
         else if (char(tolower(guess[0])) < 97 or char(tolower(guess[0])) > 122){
             cout << "This is not a character. Try again." << endl;
         }
@@ -74,7 +76,7 @@ char inputChar(vector<char>& checkGuess)
                 }
             }
         }
-    } while(guess.length() != 1);
+    } while(guess.length() > 1 or (char(tolower(guess[0])) < 97 or char(tolower(guess[0])) > 122));
     if (check == 0) checkGuess.push_back(char(tolower(guess[0])));
     return char(tolower(guess[0]));
 }
@@ -184,10 +186,8 @@ void renderGame()
     string genWord, hint;
     generateWord(genWord, hint);
     int wordLen = genWord.length(); //lấy độ dài từ đc generate
-    string str = "";
+    string str = string(wordLen, '-');
     vector<char> checkGuess;
-
-    for (int i = 0; i < wordLen; i++) str = str + '-';
 
     welcomeHeadline(wordLen);
     int insertHint = 0;
