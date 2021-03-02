@@ -1,2 +1,2 @@
 # HangmanGame
-#**Đứa con đầu lòng của chàng trai coding nghiệp dư**
+**#First-born child of a amateur programmer**
