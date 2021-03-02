@@ -183,13 +183,13 @@ void renderGame()
     int point = 0;
     string genWord, hint;
     generateWord(genWord, hint);
-    int checkWord = genWord.length(); //lấy độ dài từ đc generate
+    int wordLen = genWord.length(); //lấy độ dài từ đc generate
     string str = "";
     vector<char> checkGuess;
 
-    for (int i = 0; i < checkWord; i++) str = str + '-';
+    for (int i = 0; i < wordLen; i++) str = str + '-';
 
-    welcomeHeadline(checkWord);
+    welcomeHeadline(wordLen);
     int insertHint = 0;
     while (point <= 7){
         if (str == genWord){
@@ -201,6 +201,7 @@ void renderGame()
             printHangman(point);
             printGuessLetter(checkGuess);
         }
+
         //Nếu ppoint lớn hơn 5 thì hỏi ng chơi có cần hint không
         bool checkHint = false;
         char tmp;
@@ -216,23 +217,24 @@ void renderGame()
         if (checkHint == true){
             cout << "Hint is: " << hint << endl;
         }
+
         cout << endl << str << endl;
         char guess = inputChar(checkGuess);
-        int check = 0;
-        for (int i = 0; i < genWord.length(); i++){
-            if (guess == genWord[i]){
-                str[i] = guess;
-                check++;
-                checkWord--;
-            }
-        }
-        if (check == 0){
+        if (genWord.find_first_of(guess) == string::npos){
             point++;
+        }
+        else{
+            for (int i = 0; i < genWord.length(); i++){
+                if (guess == genWord[i]){
+                    str[i] = guess;
+                    wordLen--;
+                }
+            }
         }
         clearScreen();
     }
         //Nếu đã đoán quá 7 lần mà vẫn chưa đoán hết các từ thì thua
-    if (point > 7 and checkWord != 0){
+    if (point > 7 and wordLen != 0){
         cout << "Sorry but you have lost cunt!!" << endl;
         cout << "The correct word is: " << genWord << endl;
     }
