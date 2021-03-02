@@ -23,7 +23,10 @@ int main()
         cout << "Do you want to play again?(Y|N): ";
         cin >> playerDes;
         playerDes = char(tolower(playerDes));
-        if (playerDes == 'y') continueGame = true;
+        if (playerDes == 'y'){
+            continueGame = true;
+            clearScreen();
+        }
         else continueGame = false;
     }
 }
@@ -187,6 +190,7 @@ void renderGame()
     for (int i = 0; i < checkWord; i++) str = str + '-';
 
     welcomeHeadline(checkWord);
+    int insertHint = 0;
     while (point <= 7){
         if (str == genWord){
             cout << "Congrats, You have won!!!" << endl;
@@ -197,8 +201,20 @@ void renderGame()
             printHangman(point);
             printGuessLetter(checkGuess);
         }
-        if (point >= 6){
-            cout << hint << endl;
+        //Nếu ppoint lớn hơn 5 thì hỏi ng chơi có cần hint không
+        bool checkHint = false;
+        char tmp;
+        if (point >= 5 and insertHint == 0){
+            cout << "Do you want a hint?(Y|N): ";
+            cin >> tmp;
+            tmp = char(tolower(tmp));
+            if (tmp == 'y'){
+                checkHint = true;
+                insertHint++;
+            }
+        }
+        if (checkHint == true){
+            cout << "Hint is: " << hint << endl;
         }
         cout << endl << str << endl;
         char guess = inputChar(checkGuess);
