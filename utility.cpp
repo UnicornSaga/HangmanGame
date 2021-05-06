@@ -23,7 +23,7 @@ void generateWord(string& word, string& hint)
     } while (theme != "1" && theme != "2" && theme != "3" && theme != "4");
     clearScreen();
     ifstream file;
-    string fileName = difficulty + theme + ".txt";
+    string fileName =  "/Word List/" + difficulty + theme + ".txt";
     file.open(fileName);
     if (!file) cout << "ERROR!! UNABLE TO OPEN WORD LIST." << endl;
     else{
