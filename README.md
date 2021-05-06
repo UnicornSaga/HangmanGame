@@ -1,2 +1,2 @@
 # HangmanGame
-**#First-born child of a amateur programmer**
+**#First-born child of an amateur programmer**
