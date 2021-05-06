@@ -1,0 +1,13 @@
+12
+chaplain, tuyen_uy;
+camouflage, nguy_trang;
+conscription, su_trieu_tap;
+epaulette, quan_ham;
+marshal, nguyen_soai;
+guerrilla, du_kich;
+howitzer, luu_phao;
+midshipman, nguoi_trung_chuyen;
+musket, sung_hoa_mai;
+quartermaster, si_quan_hau_can;
+reconnoiter, trinh_sat_vien;
+artillery, phao_binh;

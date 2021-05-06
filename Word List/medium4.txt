@@ -1,0 +1,15 @@
+14
+assault, hanh_hung;
+arsenal, kho_vu_khi;
+admiral, do_doc_hai_quan;
+armistice, su_dinh_chien;
+battlefield, chien_truong;
+battleship, tau_chien;
+bombard, ban_pha;
+brigade, lu_doan;
+casualty, thuong_vong;
+conquest, su_chinh_phuc;
+corporal, ha_si;
+colonel, dai_ta;
+detonate, kich_no;
+commander, chi_huy;

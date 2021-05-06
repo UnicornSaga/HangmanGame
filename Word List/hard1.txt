@@ -1,0 +1,16 @@
+15
+porcupine, nhim;
+hippopotamus,ha ma;
+salamander, ky nhong;
+albatross, chim hai au;
+aardvark, lon dat;
+cougar, bao su tu;
+chameleon, tac ke hoa;
+hyena, linh cau;
+weasel, chon;
+pelican, bo nong;
+partridge, ga do (da da);
+armadillo, ta tu;
+chinchilla, soc len;
+chimpanzee, tinh tinh;
+wildebeest, linh duong dau bo;

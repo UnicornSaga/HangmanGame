@@ -1,0 +1,5 @@
+5
+teacher, nguoi giang day;
+driver, nguoi lai xe;
+pilot, phi cong;
+student, hoc sinh;

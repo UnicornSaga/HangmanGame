@@ -1,0 +1,25 @@
+24
+caterpillar, sau buom;
+penguin, chim canh cut;
+toad, coc;
+cub, thu con;
+ape, khi dot;
+crocodile, ca sau;
+wombat, gau co tui;
+platypus, thu mo vit;
+koala, gau tui;
+giraffe, huou cao co;
+eagle, dai bang;
+pony, ngua con;
+cricket, de men;
+leopard, bao;
+swordfish, ca kiem;
+clownfish, ca he;
+kitten, meo con;
+reindeer, tuan loc;
+shrimp, tom;
+ladybug, bo rua;
+skunk, chon hoi;
+beaver, hai ly;
+puppy, cho con;
+alligator, ca sau;

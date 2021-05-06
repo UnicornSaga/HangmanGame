@@ -1,0 +1,15 @@
+14
+arrow, mui_ten;
+armor, ao_giap;
+attack, tan_cong;
+aircraft, phi_co;
+bullet, vien_dan;
+ammo, dan_duoc;
+battle, tran_chien;
+war, chien_tranh;
+bomb, qua_bom;
+captain, chi_huy;
+combat, chien_dau;
+camp, trai;
+crew, phi_hanh_doan;
+defend, phong_thu;

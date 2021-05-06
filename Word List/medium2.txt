@@ -1,0 +1,5 @@
+4
+bulldozer, xe ui;
+canoe, ca no;
+jetpack, ten lua deo lung;
+racecar, xe dua;

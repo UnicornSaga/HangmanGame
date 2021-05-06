@@ -1,0 +1,6 @@
+5
+car, 4-wheels vehicle;
+plane, fly across the world;
+truck, big car that carries sand or cement;
+bike, 2-wheels vehicle;
+legs, dong co chay bang com;

@@ -1,0 +1,5 @@
+4
+dermatologist, bac si da lieu;
+cryptographer, nguoi ma hoa;
+custodian, nguoi giam ho;
+entrepreneur, doanh nhan;

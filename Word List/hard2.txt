@@ -1,0 +1,5 @@
+4
+locomotive, dau tau hoa;
+parachute, du luon;
+minesweeper, xe do min;
+helicopter, truc thang;
